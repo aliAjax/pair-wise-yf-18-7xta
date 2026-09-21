@@ -220,3 +220,418 @@ input {
     padding: 24px;
   }
 }
+
+/* ---------- 配石台 ---------- */
+
+select {
+  font: inherit;
+  min-height: 38px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: #ffffff;
+  color: #172033;
+  padding: 0 10px;
+}
+
+.orders-layout {
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  align-items: start;
+}
+
+.order-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-top: 4px solid var(--primary);
+}
+
+.order-card.is-placed {
+  border-top-color: var(--secondary);
+  background: linear-gradient(180deg, #f6fbf9 0%, #ffffff 42%);
+}
+
+.status-pill {
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.status-pill.placed {
+  color: var(--secondary);
+  background: color-mix(in srgb, var(--secondary) 12%, #ffffff);
+  border: 1px solid color-mix(in srgb, var(--secondary) 30%, var(--border));
+}
+
+.status-pill.draft {
+  color: #9a6700;
+  background: #fef7e0;
+  border: 1px solid #f0d98c;
+}
+
+.order-body {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 14px;
+}
+
+.diagram-wrap {
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  background: #fbfdff;
+  padding: 6px;
+  align-self: start;
+}
+
+.seat-diagram {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.seat {
+  transition: opacity 0.15s ease;
+}
+
+.seat:hover {
+  opacity: 0.82;
+}
+
+.diagram-caption {
+  margin: 4px 4px 0;
+  font-size: 11px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.slot-rows {
+  display: grid;
+  gap: 8px;
+}
+
+.slot-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 86px;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: #fbfdff;
+  cursor: pointer;
+}
+
+.slot-row.selected {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary) 18%, transparent);
+}
+
+.slot-meta {
+  display: grid;
+  gap: 2px;
+}
+
+.slot-meta b {
+  font-size: 13px;
+}
+
+.slot-meta span {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.slot-row select {
+  grid-column: 1 / -1;
+  min-height: 34px;
+  font-size: 12px;
+}
+
+.slot-flag {
+  grid-column: 1 / -1;
+  justify-self: start;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.slot-flag.ok {
+  color: var(--secondary);
+  background: color-mix(in srgb, var(--secondary) 10%, #ffffff);
+}
+
+.slot-flag.bad,
+.slot-flag.held,
+.slot-flag.paused {
+  color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 9%, #ffffff);
+}
+
+.slot-flag.paused {
+  color: #b45309;
+  background: #fef3c7;
+}
+
+.slot-error {
+  grid-column: 1 / -1;
+  color: var(--primary);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.order-banner {
+  padding: 10px 12px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.order-banner.bad {
+  color: #991b1b;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+
+.order-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.action-note {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* ---------- 宝石台账 ---------- */
+
+.filters-inline {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filters-inline label {
+  gap: 4px;
+}
+
+.filters-inline label span {
+  font-size: 11px;
+}
+
+.filters-inline select {
+  min-height: 34px;
+  font-size: 13px;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+.gem-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 1040px;
+}
+
+.gem-table th,
+.gem-table td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.gem-table th {
+  color: #64748b;
+  font-size: 12px;
+  background: #f8fafc;
+  white-space: nowrap;
+}
+
+.gem-table td b {
+  color: var(--primary);
+}
+
+.gem-table tr.paused-row {
+  background: #fffbeb;
+}
+
+.mini {
+  min-height: 30px;
+  padding: 0 10px;
+  font-size: 12px;
+  border-radius: 999px;
+}
+
+.mini.done {
+  color: var(--secondary);
+  border-color: color-mix(in srgb, var(--secondary) 30%, var(--border));
+  background: color-mix(in srgb, var(--secondary) 8%, #ffffff);
+}
+
+.mini.todo {
+  color: var(--primary);
+  border-color: color-mix(in srgb, var(--primary) 30%, var(--border));
+  background: color-mix(in srgb, var(--primary) 8%, #ffffff);
+}
+
+.mini.resolved {
+  color: #b45309;
+  border-color: #f0d98c;
+  background: #fef7e0;
+}
+
+.mini.none {
+  color: #64748b;
+}
+
+.mini:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.defect-cell {
+  min-width: 170px;
+}
+
+.defect-note {
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #991b1b;
+}
+
+.defect-note small {
+  display: block;
+  color: #94a3b8;
+}
+
+.defect-add {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.defect-add input {
+  min-height: 30px;
+  font-size: 12px;
+}
+
+.link {
+  margin-top: 4px;
+  min-height: 0;
+  border: 0;
+  background: none;
+  padding: 0;
+  color: var(--accent);
+  font-size: 12px;
+}
+
+.seat-ref {
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.seat-ref.paused {
+  color: #b45309;
+}
+
+.seat-ref.free {
+  color: var(--secondary);
+}
+
+.seat-ref.locked {
+  color: #64748b;
+}
+
+.empty-row {
+  text-align: center;
+  color: #64748b;
+  padding: 24px;
+}
+
+.table-hint {
+  margin: 12px 2px 0;
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.8;
+}
+
+/* ---------- 档案与同步 ---------- */
+
+.bottom-layout {
+  grid-template-columns: 1fr 300px;
+  align-items: start;
+}
+
+.archive {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.archive li {
+  position: relative;
+  padding: 0 0 12px 16px;
+  border-left: 2px solid color-mix(in srgb, var(--primary) 25%, var(--border));
+}
+
+.archive li::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+.archive time {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-right: 8px;
+}
+
+.archive-event {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.archive p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #334155;
+  line-height: 1.6;
+}
+
+.sync-note {
+  font-size: 13px;
+  color: #526071;
+  line-height: 1.8;
+}
+
+.rule-list {
+  margin: 16px 0 0;
+  padding-left: 18px;
+  color: #526071;
+  font-size: 13px;
+  line-height: 2;
+}
+
+@media (max-width: 860px) {
+  .orders-layout,
+  .bottom-layout,
+  .order-body {
+    grid-template-columns: 1fr;
+  }
+}
